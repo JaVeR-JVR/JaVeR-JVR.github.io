@@ -1,0 +1,50 @@
+/*
+  JaVeR / JVR — image settings
+  Change the two file paths below to replace the homepage images.
+
+  Main hero image:    images/hero.jpg
+  MOAI project image: images/moai.jpg
+*/
+
+:root {
+  --jvr-hero-image: url("images/hero.jpg");
+  --jvr-project-image: url("images/moai.jpg");
+}
+
+/* Large visual block at the top of the homepage */
+.hero-panel {
+  background-color: #111;
+  background-image: var(--jvr-hero-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Keep the original technical texture, but let the photograph show through */
+.hero-panel .checker-field {
+  opacity: 0.12;
+}
+
+/* Image behind the MOAI Studio 21 project title */
+.project-visual {
+  background-color: #161414;
+  background-image: var(--jvr-project-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Darken the project photo slightly so the white logo stays readable */
+.project-visual::before {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 8, 8, 0.18),
+    rgba(8, 8, 8, 0.72)
+  );
+  opacity: 1;
+}
+
+/* Keep the existing bottom shadow over the project photo */
+.project-visual::after {
+  background: linear-gradient(0deg, rgba(8, 8, 8, 0.55), transparent 75%);
+}
