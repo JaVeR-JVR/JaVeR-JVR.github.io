@@ -1,153 +1,129 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101113">
-  <meta name="description" content="MOAI Studio 21 — a meme-powered Discord Rich Presence project by JVR_Prod. One developer. Infinite stone-face energy.">
-  <title>MOAI Studio 21 — JVR_Prod</title>
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="JaVeR / JVR — an index of independent web projects and experiments.">
+  <title>JaVeR / JVR — Project Index</title>
   <style>
-    :root{color-scheme:dark;--bg:#101113;--panel:#17191d;--panel2:#1d2025;--text:#f2f2ef;--muted:#a5a9b0;--line:#30343b;--accent:#d9e1e8;--lime:#c8f169;--max:1040px}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:90px}
-    body{margin:0;background:radial-gradient(ellipse at 75% -15%,#303742 0,transparent 45%),var(--bg);color:var(--text);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    a{color:var(--accent);text-decoration-color:#69717c;text-underline-offset:4px}
-    a:hover{color:var(--lime)}
-    button{font:inherit}
-    .topbar{position:sticky;top:0;z-index:5;backdrop-filter:blur(16px);background:#101113d9;border-bottom:1px solid #30343b}
-    .nav{max-width:var(--max);margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{color:var(--text);text-decoration:none;font-weight:800;letter-spacing:-.03em;display:flex;gap:10px;align-items:center;white-space:nowrap}
-    .brand-mark{width:32px;height:32px;border:1px solid #555d67;background:linear-gradient(145deg,#353a42,#16181c);border-radius:10px;display:grid;place-items:center;font-size:20px}
-    .nav-right{display:flex;gap:16px;align-items:center}.nav-links{display:flex;gap:16px;align-items:center;font-size:13px}.nav-links a{color:var(--muted);text-decoration:none}
-    .lang-btn{border:1px solid #59616b;background:var(--panel2);color:var(--text);border-radius:999px;padding:8px 13px;cursor:pointer;font-weight:700;font-size:13px;white-space:nowrap}
-    .lang-btn:hover{border-color:var(--lime);color:var(--lime)}
-    main{max-width:var(--max);margin:auto;padding:68px 22px 40px}
-    .eyebrow{color:var(--lime);font-size:12px;letter-spacing:.19em;text-transform:uppercase;font-weight:800}
-    .hero{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:36px;align-items:center;padding:34px 0 56px}
-    h1{font-size:clamp(46px,8vw,86px);line-height:.98;letter-spacing:-.075em;margin:14px 0 22px;max-width:800px}
-    .subtitle{font-size:clamp(18px,2.7vw,23px);color:#d0d4d8;max-width:690px;line-height:1.5;margin:0}
-    .tagline{margin-top:25px;padding:15px 18px;border-left:3px solid var(--lime);background:#c8f1690b;border-radius:0 10px 10px 0;max-width:700px;font-weight:650}
-    .hero-stone{width:220px;height:220px;margin:auto;border:1px solid #424852;border-radius:34px;background:linear-gradient(145deg,#2b3038,#15171b 70%);display:grid;place-items:center;font-size:112px;box-shadow:0 25px 80px #0007;transform:rotate(2deg)}
-    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:23px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:5px 10px;color:#c3c8ce;font-size:12px;background:#ffffff04}
-    .section{padding:34px 0;border-top:1px solid var(--line)}
-    h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.045em;line-height:1.1;margin:0 0 15px}h3{font-size:18px;margin:0 0 8px;letter-spacing:-.02em}
-    p{color:#b9bec6;margin:0 0 14px}.lead{max-width:780px;font-size:18px;color:#d0d4d8}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:23px}
-    .card{background:linear-gradient(145deg,var(--panel),#141619);border:1px solid var(--line);border-radius:15px;padding:20px;min-width:0}
-    .card .emoji{font-size:24px;display:block;margin-bottom:12px}.card p{font-size:14px;margin-bottom:0}
-    .steps{counter-reset:step;display:grid;gap:12px;margin-top:22px}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;background:#ffffff03;border:1px solid var(--line);border-radius:13px;padding:17px}.step-number{width:36px;height:36px;border-radius:11px;background:var(--panel2);border:1px solid #424750;display:grid;place-items:center;font-weight:800;color:var(--lime)}.step p{margin:3px 0 0;font-size:14px}
-    .quote{font-size:clamp(19px,3vw,27px);letter-spacing:-.025em;line-height:1.45;color:#f0f1ed;padding:24px;border:1px dashed #515862;border-radius:16px;background:#ffffff03;margin-top:22px}
-    .quote small{display:block;color:var(--muted);font-size:13px;letter-spacing:0;margin-top:12px}
-    .activity{margin-top:20px;background:#171a1f;border:1px solid #383e47;border-radius:15px;padding:19px;display:grid;grid-template-columns:62px 1fr;gap:15px;max-width:650px}
-    .activity-icon{width:62px;height:62px;border-radius:14px;background:linear-gradient(145deg,#7b858f,#31363d);display:grid;place-items:center;font-size:31px}.activity-title{font-weight:800}.activity-sub{color:#b2b9c2;font-size:14px}.activity-note{font-size:12px;color:#8f98a3;margin-top:8px}
-    .legal-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}.legal-link{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:11px 14px;text-decoration:none;background:var(--panel);font-size:14px}
-    footer{margin-top:24px;padding:25px 0 10px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:start;gap:20px;color:#858d97;font-size:12px}footer p{font-size:12px;max-width:650px;margin:0}
-    [hidden]{display:none!important}
-    @media(max-width:720px){.hero{grid-template-columns:1fr;padding-top:22px}.hero-stone{grid-row:1;width:120px;height:120px;font-size:66px;border-radius:24px;margin:0 0 4px}.grid{grid-template-columns:1fr}.nav-links{display:none}main{padding-top:38px}.hero{gap:24px}footer{display:block}footer p{margin-bottom:12px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    :root{color-scheme:dark;--black:#090909;--panel:#111010;--panel2:#171514;--paper:#f4f1eb;--white:#f5f4f1;--muted:#aaa39c;--dim:#79716b;--line:#37302d;--red:#c52335;--red2:#8b1523;--sakura:#e7a2b0;--mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif;--max:1160px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--white);font:15px/1.55 var(--sans);letter-spacing:-.018em;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}a:hover{color:var(--sakura)}a:focus-visible,button:focus-visible{outline:2px solid var(--sakura);outline-offset:4px}.wrap{width:min(calc(100% - 48px),var(--max));margin-inline:auto}.mono,.eyebrow,.nav,.micro,.meta,.tag,.footer-note{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}.eyebrow{display:flex;align-items:center;gap:10px;font-size:10px;color:var(--sakura)}.eyebrow:before{content:"";width:24px;height:1px;background:var(--red)}.muted{color:var(--muted)}
+    .topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid #292422;background:rgba(9,9,9,.9);backdrop-filter:blur(18px)}.topbar-inner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;min-width:max-content}.brand-mark{width:37px;height:37px;border:1px solid #70645f;background:repeating-conic-gradient(#f0ece6 0% 25%,#171515 0% 50%) 50%/14px 14px;display:grid;place-items:center}.brand-mark span{width:19px;height:19px;display:grid;place-items:center;background:var(--red);font:10px var(--mono);font-weight:bold;color:white}.brand-name{font-size:13px;font-weight:850;letter-spacing:-.04em}.brand-sub{display:block;color:var(--muted);font:9px var(--mono);letter-spacing:.08em;margin-top:1px}.nav{display:flex;gap:25px;font-size:10px;color:#c8c1ba}.nav a:hover{color:var(--sakura)}.top-actions{display:flex;align-items:center;gap:10px}.lang{font:10px var(--mono);letter-spacing:.05em;padding:8px 10px;border:1px solid #544944;background:transparent;color:var(--white);cursor:pointer}.lang:hover{border-color:var(--sakura);color:var(--sakura)}
+    .hero{padding:47px 0 33px}.hero-head{display:flex;justify-content:space-between;align-items:start;gap:18px;margin-bottom:18px}.hero-code{text-align:right;color:#8e8780;font:9px/1.8 var(--mono);letter-spacing:.06em}.hero-panel{position:relative;isolation:isolate;overflow:hidden;min-height:520px;border:1px solid #4a413d;background:#111;display:flex;align-items:flex-end}.checker-field{position:absolute;inset:0;z-index:-3;background-color:#111;background-image:linear-gradient(45deg,#777 25%,transparent 25%),linear-gradient(-45deg,#777 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#777 75%),linear-gradient(-45deg,transparent 75%,#777 75%);background-size:72px 72px;background-position:0 0,0 36px,36px -36px,-36px 0;opacity:.66;mask-image:linear-gradient(90deg,#000 0%,#000 53%,transparent 100%)}.hero-panel:after{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(8,8,8,.92),rgba(8,8,8,.72) 40%,rgba(8,8,8,.1) 82%),linear-gradient(0deg,rgba(8,8,8,.82),transparent 62%)}.hero-grid{position:absolute;inset:0;z-index:-1;opacity:.19;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(90deg,#000,transparent 90%)}.hero-copy{padding:clamp(28px,5.5vw,68px);max-width:790px;padding-bottom:clamp(44px,7vw,82px)}.hero-title{margin:19px 0 22px;font-size:clamp(65px,11vw,135px);line-height:.78;letter-spacing:-.095em;font-weight:900}.hero-title span{display:block;color:var(--sakura);font:italic 400 .77em/.98 var(--serif);letter-spacing:-.075em;margin-top:12px}.hero-desc{max-width:480px;color:#e2dcd6;font-size:clamp(14px,1.7vw,17px);line-height:1.7;margin:0}.hero-quote{max-width:430px;margin-top:26px;padding-left:14px;border-left:2px solid var(--red);font-size:12px;color:#fff}.hero-quote small{display:block;color:#b9afa8;font:9px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-top:7px}.hero-meta{position:absolute;right:18px;bottom:18px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}.chip{padding:7px 9px;background:#080808a8;border:1px solid #ffffff53;font:9px var(--mono);letter-spacing:.07em;text-transform:uppercase}.chip.red{background:var(--red);border-color:var(--red)}.torii{position:absolute;right:8%;top:7%;width:min(32vw,330px);filter:drop-shadow(0 7px 20px #0008);opacity:.95}.floating-tile{position:absolute;right:7%;bottom:24%;width:clamp(82px,12vw,142px);aspect-ratio:1;border:5px solid #080808;box-shadow:0 16px 44px #0009;transform:rotate(5deg);background:repeating-conic-gradient(#e8e4de 0% 25%,#141212 0% 50%) 50%/24px 24px}.floating-tile:after{content:"JVR";position:absolute;right:-9px;bottom:7px;background:var(--red);color:#fff;padding:4px 6px;font:9px var(--mono)}.petal{position:absolute;width:12px;height:17px;background:var(--sakura);border-radius:100% 0 100% 0;opacity:.7;transform:rotate(36deg)}.petal.one{right:17%;top:23%}.petal.two{right:4%;top:47%;transform:rotate(73deg) scale(.7)}.petal.three{left:49%;top:12%;transform:rotate(-25deg) scale(.8)}.hero-under{display:flex;justify-content:space-between;gap:15px;padding-top:13px;color:#8f8780;font:9px var(--mono);letter-spacing:.06em;text-transform:uppercase}.hero-under strong{color:var(--sakura);font-weight:400}
+    .ticker{overflow:hidden;white-space:nowrap;border-block:1px solid #352c29;background:#100e0e}.ticker-inner{display:flex;justify-content:space-between;gap:28px;min-height:44px;align-items:center;font:9px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#d7d0ca}.ticker b{font-weight:400;color:var(--red)}.ticker i{font-style:normal;color:var(--sakura);font-size:16px}
+    .projects{padding:clamp(58px,8vw,95px) 0 84px;border-bottom:1px solid #2d2825}.section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:28px}.section-title{font-size:clamp(36px,6vw,67px);line-height:.91;letter-spacing:-.08em;margin:13px 0 0;font-weight:850}.section-title em{color:var(--sakura);font:italic 400 .95em var(--serif);letter-spacing:-.06em}.section-note{max-width:330px;margin:0;color:#aba39c;font-size:12px;line-height:1.8}.project-card{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);border:1px solid #4a413d;background:#111010;transition:border-color .2s,transform .2s}.project-card:hover{border-color:#8b6669;transform:translateY(-2px)}.project-visual{min-height:310px;position:relative;overflow:hidden;background:#161414;border-right:1px solid #413633;display:flex;align-items:center;justify-content:center}.project-visual:before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(#6b6864 0% 25%,#171615 0% 50%) 50%/34px 34px;opacity:.66}.project-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#080808c9,transparent 75%)}.project-wordmark{position:relative;z-index:1;text-align:center;text-shadow:0 5px 24px #000}.project-wordmark .moai{display:block;color:#f3eee7;font-size:clamp(48px,7vw,86px);font-weight:950;line-height:.78;letter-spacing:-.09em}.project-wordmark .studio{display:block;color:var(--sakura);font:italic 400 clamp(29px,4vw,47px)/1.1 var(--serif);letter-spacing:-.07em}.project-index{position:absolute;z-index:2;left:15px;top:15px;color:white;font:9px var(--mono);letter-spacing:.1em}.project-sigil{position:absolute;z-index:2;right:18px;top:17px;width:50px;height:50px}.project-info{padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;align-items:start}.project-topline{display:flex;justify-content:space-between;gap:15px;width:100%;font:9px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#9e958e}.status{color:var(--sakura)}.project-info h3{font-size:clamp(29px,4vw,43px);line-height:.95;letter-spacing:-.07em;margin:24px 0 15px}.project-info h3 span{display:block;color:var(--sakura);font:italic 400 .96em var(--serif);letter-spacing:-.055em;margin-top:5px}.project-info p{margin:0;color:#bcb3ac;max-width:420px;font-size:13px;line-height:1.8}.tags{display:flex;gap:7px;flex-wrap:wrap;margin:20px 0 29px}.tag{font-size:8px;padding:6px 8px;border:1px solid #423b36;color:#d1c9c2}.project-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:auto}.button{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:12px 15px;border:1px solid #65514d;background:transparent;color:#f5f1ec;font:10px var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:background .2s,border-color .2s,color .2s}.button:hover{border-color:var(--sakura);color:var(--sakura)}.button.primary{background:var(--red);border-color:var(--red);color:white}.button.primary:hover{background:#e02d43;border-color:#e02d43;color:white}.text-link{font:9px var(--mono);color:#aaa099;text-transform:uppercase;letter-spacing:.05em;padding:9px}.text-link:hover{color:var(--sakura)}.next-line{margin-top:17px;display:flex;justify-content:space-between;gap:15px;align-items:center;padding:16px 0;border-top:1px solid #302a27;color:#827a74;font:9px var(--mono);letter-spacing:.07em;text-transform:uppercase}.next-line span:last-child{color:var(--sakura)}
+    .footer{padding:28px 0 23px}.footer-main{display:flex;justify-content:space-between;align-items:start;gap:25px}.footer-name{font-weight:900;font-size:clamp(24px,3vw,35px);letter-spacing:-.08em}.footer-name span{color:var(--red)}.footer-desc{max-width:460px;color:#8e857e;font-size:11px;line-height:1.8;margin-top:6px}.footer-credit{text-align:right;color:#a49a92;font:9px/1.8 var(--mono);letter-spacing:.04em;text-transform:uppercase}.footer-credit strong{display:block;color:var(--sakura);font-weight:400}.footer-bottom{margin-top:24px;padding-top:16px;border-top:1px solid #302a27;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#716a64;font:8px var(--mono);letter-spacing:.06em;text-transform:uppercase}.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+    [data-i18n]{transition:opacity .12s} .hidden{display:none!important}
+    @media(max-width:760px){.nav{gap:13px}.hero-panel{min-height:490px}.torii{right:1%;top:7%;width:39vw}.floating-tile{right:4%;bottom:29%}.section-head{display:block}.section-note{margin-top:19px;max-width:520px}.project-card{grid-template-columns:1fr}.project-visual{min-height:260px;border-right:0;border-bottom:1px solid #413633}.project-visual .project-wordmark .moai{font-size:77px}.project-info{min-height:320px}}
+    @media(max-width:540px){.wrap{width:calc(100% - 28px)}.topbar-inner{min-height:63px;gap:10px}.brand-mark{width:32px;height:32px}.brand-name{font-size:12px}.brand-sub{font-size:8px}.nav{display:none}.hero{padding-top:26px}.hero-head{margin-bottom:13px}.hero-code{font-size:8px}.hero-panel{min-height:515px}.hero-copy{padding:22px;padding-bottom:93px}.hero-title{font-size:clamp(61px,17vw,88px);margin:19px 0 21px}.hero-desc{font-size:14px}.hero-quote{font-size:11px;margin-top:20px}.hero-meta{left:14px;right:14px;bottom:13px;justify-content:start;font-size:8px}.chip{font-size:8px;padding:6px 7px}.torii{width:43vw;top:10%;right:-1%}.floating-tile{width:82px;top:35%;bottom:auto;right:16px;border-width:4px;background-size:20px 20px}.petal.one{right:21%;top:20%}.hero-under{font-size:8px;line-height:1.7}.ticker-inner{justify-content:flex-start;gap:24px;padding:0 14px;font-size:8px}.projects{padding:62px 0}.section-title{font-size:clamp(38px,12vw,54px)}.project-visual{min-height:235px}.project-visual .project-wordmark .moai{font-size:68px}.project-info{padding:23px;min-height:335px}.project-info h3{font-size:34px;margin-top:22px}.project-links{gap:6px}.button{padding:11px 12px;font-size:9px}.footer-main{display:block}.footer-credit{text-align:left;margin-top:17px}.footer-bottom{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
   </style>
 </head>
 <body>
-<header class="topbar">
-  <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">🗿</span><span>MOAI Studio 21</span></a>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="#about" data-en="About" data-ru="О проекте">About</a>
-        <a href="#how-it-works" data-en="How it works" data-ru="Как это работает">How it works</a>
-        <a href="#legal" data-en="Legal" data-ru="Документы">Legal</a>
+  <a href="#main" class="hidden" id="skip">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="JVR homepage">
+        <span class="brand-mark" aria-hidden="true"><span>J</span></span>
+        <span><span class="brand-name">JaVeR / JVR</span><span class="brand-sub" data-en="INDEPENDENT PROJECT INDEX" data-ru="КАТАЛОГ НЕЗАВИСИМЫХ ПРОЕКТОВ">INDEPENDENT PROJECT INDEX</span></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#projects" data-en="Projects" data-ru="Проекты">Projects</a>
+        <a href="#about" data-en="About" data-ru="О странице">About</a>
+        <a href="https://github.com/JaVeR-JVR" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+      <div class="top-actions"><button class="lang" type="button" id="langToggle" aria-label="Switch language">RU / EN</button></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <div class="hero-head">
+        <div class="eyebrow" data-en="JVR_PROD / INDEX 001" data-ru="JVR_PROD / УКАЗАТЕЛЬ 001">JVR_PROD / INDEX 001</div>
+        <div class="hero-code">WEB EXPERIMENTS<br>EKATERINBURG · EST. IN PROGRESS</div>
       </div>
-      <button class="lang-btn" id="languageToggle" type="button" aria-label="Switch language to Russian">РУССКИЙ&nbsp; / &nbsp;EN</button>
-    </div>
-  </nav>
-</header>
-<main id="top">
-  <section class="hero" aria-labelledby="main-title">
-    <div>
-      <div class="eyebrow" data-en="An unserious project by JVR_Prod" data-ru="Несерьёзный проект от JVR_Prod">An unserious project by JVR_Prod</div>
-      <h1 id="main-title">MOAI<br>Studio 21<span style="color:var(--lime)">.</span></h1>
-      <p class="subtitle" data-en="A tiny Discord Rich Presence project with the energy of a producer who has 47 plugins, 2 unfinished loops, and absolutely no intention of opening the project again." data-ru="Маленький проект для Discord Rich Presence с энергетикой битмейкера, у которого 47 плагинов, 2 незаконченных лупа и ни малейшего желания снова открывать проект.">A tiny Discord Rich Presence project with the energy of a producer who has 47 plugins, 2 unfinished loops, and absolutely no intention of opening the project again.</p>
-      <div class="tagline">MOAI make BRrrrAM BAM BAM BA-Bam in MOAI Studio = MOAI hapy)))</div>
-      <div class="meta"><span class="pill">🗿 JVR_Prod</span><span class="pill" data-en="One developer" data-ru="Один разработчик">One developer</span><span class="pill" data-en="Maximum boulder energy" data-ru="Максимальная энергия камня">Maximum boulder energy</span></div>
-    </div>
-    <div class="hero-stone" aria-label="Moai stone head emoji">🗿</div>
-  </section>
+      <div class="hero-panel">
+        <div class="checker-field" aria-hidden="true"></div><div class="hero-grid" aria-hidden="true"></div>
+        <svg class="torii" viewBox="0 0 320 250" fill="none" aria-hidden="true">
+          <path d="M37 42 Q160 18 283 42 L273 57 Q160 38 47 57 Z" fill="#c52335"/>
+          <path d="M58 62 L76 62 L76 216 L58 216 Z M244 62 L262 62 L262 216 L244 216 Z" fill="#c52335"/>
+          <path d="M38 84 L282 84 L282 99 L38 99 Z" fill="#c52335"/>
+          <path d="M68 113 L252 113 L252 126 L68 126 Z" fill="#8b1523"/>
+          <path d="M47 216 L273 216" stroke="#c52335" stroke-width="8"/>
+        </svg>
+        <div class="floating-tile" aria-hidden="true"></div><i class="petal one" aria-hidden="true"></i><i class="petal two" aria-hidden="true"></i><i class="petal three" aria-hidden="true"></i>
+        <div class="hero-copy">
+          <div class="eyebrow" data-en="A SMALL INDEX OF BIG SIDE QUESTS" data-ru="НЕБОЛЬШОЙ УКАЗАТЕЛЬ БОЛЬШИХ ПОБОЧНЫХ КВЕСТОВ">A SMALL INDEX OF BIG SIDE QUESTS</div>
+          <h1 class="hero-title">JaVeR<span>project index.</span></h1>
+          <p class="hero-desc" data-en="Websites, experiments and strange little worlds made under the JVR name. One link at a time; no giant studio pretending to be a corporation." data-ru="Сайты, эксперименты и небольшие странные миры под именем JVR. По одной ссылке за раз — без гигантской студии, притворяющейся корпорацией.">Websites, experiments and strange little worlds made under the JVR name. One link at a time; no giant studio pretending to be a corporation.</p>
+          <div class="hero-quote"><span data-en="Currently building things. Occasionally finishing them." data-ru="Сейчас что-то создаю. Иногда даже заканчиваю.">Currently building things. Occasionally finishing them.</span><small>JVR_PROD / FIELD NOTE 001</small></div>
+        </div>
+        <div class="hero-meta"><span class="chip red">01 / LIVE</span><span class="chip">STATIC WEB / GH PAGES</span><span class="chip">NO CORPORATE LORE</span></div>
+      </div>
+      <div class="hero-under"><span data-en="INDEPENDENT WORKS / SMALL SCALE, FULL INTENT" data-ru="НЕЗАВИСИМЫЕ ПРОЕКТЫ / МАЛЫЙ МАСШТАБ, ПОЛНЫЙ ЗАМЫСЕЛ">INDEPENDENT WORKS / SMALL SCALE, FULL INTENT</span><span><strong>●</strong> <span data-en="ONE PROJECT ONLINE" data-ru="ОДИН ПРОЕКТ ОНЛАЙН">ONE PROJECT ONLINE</span></span></div>
+    </section>
 
-  <section class="section" id="about">
-    <div class="eyebrow" data-en="01 / The lore" data-ru="01 / Лор проекта">01 / The lore</div>
-    <h2 data-en="The DAW is imaginary. The vibe is not." data-ru="DAW вымышленная. Вайб — настоящий.">The DAW is imaginary. The vibe is not.</h2>
-    <p class="lead" data-en="MOAI Studio 21 is a joke project made for one very important purpose: to give a Discord profile a custom activity and a little producer-core personality." data-ru="MOAI Studio 21 — шуточный проект с одной важнейшей целью: добавить профилю Discord собственную активность и немного битмейкерского характера.">MOAI Studio 21 is a joke project made for one very important purpose: to give a Discord profile a custom activity and a little producer-core personality.</p>
-    <p data-en="The name is a playful nod to FL Studio 21, combined with the internet's favourite emotionally unavailable stone head: 🗿. This is not a real digital audio workstation, and it does not pretend to replace one. No piano roll. No mixer. No 808s were harmed in the making of this landing page." data-ru="Название — шутливая отсылка к FL Studio 21, объединённая с любимой интернетом каменной головой без эмоций: 🗿. Это не настоящая цифровая аудиостанция и она не пытается её заменить. Ни пиано-ролла, ни микшера. При создании этой страницы ни один 808 не пострадал.">The name is a playful nod to FL Studio 21, combined with the internet's favourite emotionally unavailable stone head: 🗿. This is not a real digital audio workstation, and it does not pretend to replace one. No piano roll. No mixer. No 808s were harmed in the making of this landing page.</p>
-    <div class="grid">
-      <article class="card"><span class="emoji">🎹</span><h3 data-en="Producer folklore" data-ru="Битмейкерский фольклор">Producer folklore</h3><p data-en="One more plugin. One more preset. One more loop. Suddenly it's 4:21 AM and the kick is still too loud." data-ru="Ещё один плагин. Ещё один пресет. Ещё один луп. И внезапно уже 4:21 утра, а кик всё ещё слишком громкий.">One more plugin. One more preset. One more loop. Suddenly it's 4:21 AM and the kick is still too loud.</p></article>
-      <article class="card"><span class="emoji">🗿</span><h3 data-en="Stone-faced quality control" data-ru="Контроль качества с каменным лицом">Stone-faced quality control</h3><p data-en="The mix is clipping. The master is red. The MOAI has reviewed the situation and chosen silence." data-ru="Микс клиппует. Мастер красный. MOAI изучил ситуацию и выбрал молчание.">The mix is clipping. The master is red. The MOAI has reviewed the situation and chosen silence.</p></article>
-      <article class="card"><span class="emoji">💿</span><h3 data-en="Certified loop enjoyer" data-ru="Сертифицированный любитель лупов">Certified loop enjoyer</h3><p data-en="An 8-bar masterpiece, extended to 3 minutes by adding reverb and refusing to arrange anything." data-ru="Шедевр на 8 тактов, растянутый до 3 минут ревербом и отказом хоть что-нибудь аранжировать.">An 8-bar masterpiece, extended to 3 minutes by adding reverb and refusing to arrange anything.</p></article>
-    </div>
-    <div class="quote">“bro this goes hard”<small data-en="— a comment that could save a producer's entire week" data-ru="— комментарий, который может спасти битмейкеру всю неделю">— a comment that could save a producer's entire week</small></div>
-  </section>
+    <div class="ticker" aria-hidden="true"><div class="wrap ticker-inner"><span>JVR_PROD <b>///</b> PROJECT INDEX</span><i>✳</i><span>WEB / AUDIO / CULTURE</span><b>INDEPENDENT BY DESIGN</b><i>✳</i><span>BUILT ONE TAB AT A TIME</span></div></div>
 
-  <section class="section" id="how-it-works">
-    <div class="eyebrow" data-en="02 / The signal chain" data-ru="02 / Сигнальная цепь">02 / The signal chain</div>
-    <h2 data-en="How it actually works" data-ru="Как это работает на самом деле">How it actually works</h2>
-    <p data-en="Under the meme skin, Rich Presence is a Discord feature for showing activity information in a user's profile. This website describes the project; it does not run the activity by itself." data-ru="Под мемной оболочкой Rich Presence — функция Discord, которая показывает информацию об активности в профиле пользователя. Этот сайт описывает проект, но сам по себе не запускает активность.">Under the meme skin, Rich Presence is a Discord feature for showing activity information in a user's profile. This website describes the project; it does not run the activity by itself.</p>
-    <div class="steps">
-      <div class="step"><div class="step-number">01</div><div><h3 data-en="Application identity" data-ru="Идентификатор приложения">Application identity</h3><p data-en="MOAI Studio 21 has an Application ID configured in the Discord Developer Portal. Uploaded art assets can be referenced by their asset keys." data-ru="У MOAI Studio 21 есть Application ID, настроенный в Discord Developer Portal. Загруженные изображения можно указывать по их ключам assets.">MOAI Studio 21 has an Application ID configured in the Discord Developer Portal. Uploaded art assets can be referenced by their asset keys.</p></div></div>
-      <div class="step"><div class="step-number">02</div><div><h3 data-en="A compatible local RPC client" data-ru="Совместимый локальный RPC-клиент">A compatible local RPC client</h3><p data-en="A separate client running on your computer sets the activity text, state, timestamps, and image keys. The website itself does not do this." data-ru="Отдельный клиент на компьютере задаёт текст активности, состояние, время и ключи изображений. Сам сайт этого не делает.">A separate client running on your computer sets the activity text, state, timestamps, and image keys. The website itself does not do this.</p></div></div>
-      <div class="step"><div class="step-number">03</div><div><h3 data-en="Local connection to Discord" data-ru="Локальное подключение к Discord">Local connection to Discord</h3><p data-en="The client communicates with the running Discord desktop app through its local RPC/IPC interface. Discord then decides how to render the activity." data-ru="Клиент связывается с запущенным настольным Discord через локальный интерфейс RPC/IPC. Затем сам Discord решает, как отображать активность.">The client communicates with the running Discord desktop app through its local RPC/IPC interface. Discord then decides how to render the activity.</p></div></div>
-      <div class="step"><div class="step-number">04</div><div><h3 data-en="The profile gets the bit" data-ru="В профиле появляется движ">The profile gets the bit</h3><p data-en="If the client is connected and activity sharing is allowed, Discord can display the configured presence. Stop the client or clear the activity and the show is over." data-ru="Если клиент подключён и показ активности разрешён, Discord может отобразить настроенную активность. Останови клиент или сбрось активность — шоу окончено.">If the client is connected and activity sharing is allowed, Discord can display the configured presence. Stop the client or clear the activity and the show is over.</p></div></div>
-    </div>
-    <div class="activity">
-      <div class="activity-icon">🗿</div>
-      <div><div class="activity-title">MOAI Studio 21</div><div class="activity-sub" data-en="MOAI is cooking the 808" data-ru="MOAI жарит 808">MOAI is cooking the 808</div><div class="activity-sub" data-en="Sidechain? I hardly know her." data-ru="Сайдчейн? Впервые слышу.">Sidechain? I hardly know her.</div><div class="activity-note" data-en="Illustrative mock-up — not a live Discord connection." data-ru="Иллюстрация для примера — это не настоящее подключение к Discord.">Illustrative mock-up — not a live Discord connection.</div></div>
-    </div>
-    <p style="margin-top:18px" data-en="Reality check: an Application ID is an identifier, not an executable. Renaming an app in the Developer Portal does not create a functioning RPC client. This repository contains the project website and documentation, not a standalone desktop application." data-ru="Без магии: Application ID — это идентификатор, а не исполняемый файл. Переименование приложения в Developer Portal не создаёт работающий RPC-клиент. В этом репозитории находятся сайт и документация, а не отдельная настольная программа.">Reality check: an Application ID is an identifier, not an executable. Renaming an app in the Developer Portal does not create a functioning RPC client. This repository contains the project website and documentation, not a standalone desktop application.</p>
-  </section>
+    <section class="projects" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow" data-en="01 / SELECTED PROJECT" data-ru="01 / ВЫБРАННЫЙ ПРОЕКТ">01 / SELECTED PROJECT</div><h2 class="section-title" data-en="Currently <em>online.</em>" data-ru="Уже <em>в сети.</em>">Currently <em>online.</em></h2></div>
+          <p class="section-note" data-en="A short list on purpose. Projects appear here when they have a real page to visit — not just a folder named FINAL_final." data-ru="Список короткий намеренно. Проекты появляются здесь, когда у них есть настоящая опубликованная страница, а не только папка FINAL_final.">A short list on purpose. Projects appear here when they have a real page to visit — not just a folder named FINAL_final.</p>
+        </div>
+        <article class="project-card">
+          <a class="project-visual" href="https://javer-jvr.github.io/MOAI-Studio-Legal-by-JVR-Prod/" target="_blank" rel="noopener noreferrer" aria-label="Open MOAI Studio 21">
+            <span class="project-index">PROJECT 001 / WEB</span>
+            <svg class="project-sigil" viewBox="0 0 60 60" fill="none" aria-hidden="true"><path d="M5 12 Q30 3 55 12 L52 18 Q30 12 8 18 Z" fill="#c52335"/><path d="M10 21 H16 V53 H10 Z M44 21 H50 V53 H44 Z M6 25 H54 V30 H6 Z" fill="#c52335"/><path d="M16 34 H44 V39 H16 Z" fill="#8b1523"/></svg>
+            <span class="project-wordmark"><span class="moai">MOAI</span><span class="studio">Studio 21</span></span>
+          </a>
+          <div class="project-info">
+            <div class="project-topline"><span>WEB EXPERIENCE / 001</span><span class="status">● LIVE</span></div>
+            <h3>MOAI Studio 21<span data-en="Stone Sound System" data-ru="Каменная звуковая система">Stone Sound System</span></h3>
+            <p data-en="A fictional stone-age DAW, producer folklore, Moai mythology and a little musical nonsense. Built as a web experience — it is not real audio software." data-ru="Вымышленная DAW каменного века, продюсерский фольклор, мифология моаи и немного музыкального абсурда. Это веб-проект, а не настоящая аудиопрограмма.">A fictional stone-age DAW, producer folklore, Moai mythology and a little musical nonsense. Built as a web experience — it is not real audio software.</p>
+            <div class="tags"><span class="tag">FICTIONAL DAW</span><span class="tag">MUSIC CULTURE</span><span class="tag">WEB DESIGN</span></div>
+            <div class="project-links"><a class="button primary" href="https://javer-jvr.github.io/MOAI-Studio-Legal-by-JVR-Prod/" target="_blank" rel="noopener noreferrer"><span data-en="OPEN PROJECT" data-ru="ОТКРЫТЬ ПРОЕКТ">OPEN PROJECT</span> <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/JaVeR-JVR/MOAI-Studio-Legal-by-JVR-Prod" target="_blank" rel="noopener noreferrer" data-en="SOURCE ↗" data-ru="ИСХОДНИКИ ↗">SOURCE ↗</a><a class="text-link" href="https://javer-jvr.github.io/MOAI-Studio-Legal-by-JVR-Prod/terms.html" target="_blank" rel="noopener noreferrer" data-en="TERMS" data-ru="УСЛОВИЯ">TERMS</a><a class="text-link" href="https://javer-jvr.github.io/MOAI-Studio-Legal-by-JVR-Prod/privacy.html" target="_blank" rel="noopener noreferrer" data-en="PRIVACY" data-ru="ПРИВАТНОСТЬ">PRIVACY</a></div>
+          </div>
+        </article>
+        <div class="next-line"><span data-en="THE INDEX IS OPEN — MORE PROJECTS WHEN THEY ARE READY" data-ru="УКАЗАТЕЛЬ ОТКРЫТ — НОВЫЕ ПРОЕКТЫ ПО МЕРЕ ГОТОВНОСТИ">THE INDEX IS OPEN — MORE PROJECTS WHEN THEY ARE READY</span><span>→ NEXT / TBA</span></div>
+      </div>
+    </section>
+  </main>
 
-  <section class="section" id="producer-presets">
-    <div class="eyebrow" data-en="03 / Preset bank" data-ru="03 / Банк пресетов">03 / Preset bank</div>
-    <h2 data-en="Suggested activity text" data-ru="Варианты текста активности">Suggested activity text</h2>
-    <p data-en="Use the lines below as inspiration in your RPC client. They are text ideas, not built-in controls." data-ru="Используй эти строки как идеи для RPC-клиента. Это варианты текста, а не встроенные настройки.">Use the lines below as inspiration in your RPC client. They are text ideas, not built-in controls.</p>
-    <div class="grid">
-      <article class="card"><span class="emoji">🔊</span><h3>808 Overdrive</h3><p data-en="Details: MOAI is cooking the 808<br>State: Neighbours have left the chat" data-ru="Details: MOAI жарит 808<br>State: Соседи вышли из чата">Details: MOAI is cooking the 808<br>State: Neighbours have left the chat</p></article>
-      <article class="card"><span class="emoji">🧪</span><h3>Unmastered Final FINAL</h3><p data-en="Details: Master bus in the red<br>State: Sounds fine on my headphones" data-ru="Details: Мастер-клиппинг<br>State: В моих наушниках нормально">Details: Master bus in the red<br>State: Sounds fine on my headphones</p></article>
-      <article class="card"><span class="emoji">🌙</span><h3>Loop at 4:21 AM</h3><p data-en="Details: Just one more plugin<br>State: The loop is still 8 bars" data-ru="Details: Ещё один плагин<br>State: Луп всё ещё на 8 тактов">Details: Just one more plugin<br>State: The loop is still 8 bars</p></article>
+  <footer class="footer" id="about">
+    <div class="wrap">
+      <div class="footer-main">
+        <div><div class="footer-name">JaVeR<span>.</span> / JVR</div><p class="footer-desc" data-en="An independent project index by JVR_Prod. Small experiments, odd ideas and the occasional attempt to make the internet look a little less like a spreadsheet." data-ru="Каталог независимых проектов от JVR_Prod. Небольшие эксперименты, странные идеи и периодические попытки сделать интернет чуть менее похожим на таблицу Excel.">An independent project index by JVR_Prod. Small experiments, odd ideas and the occasional attempt to make the internet look a little less like a spreadsheet.</p></div>
+        <div class="footer-credit">MADE BY / <strong>JVR_PROD</strong><br>STATIC BY DESIGN<br>HOSTED ON GITHUB PAGES</div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year">2026</span> JVR_PROD / INDEPENDENT WORK</span><div class="footer-links"><a href="https://github.com/JaVeR-JVR" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="#top" data-en="BACK TO TOP ↑" data-ru="НАВЕРХ ↑">BACK TO TOP ↑</a></div></div>
     </div>
-  </section>
-
-  <section class="section" id="legal">
-    <div class="eyebrow" data-en="04 / Housekeeping" data-ru="04 / Формальности">04 / Housekeeping</div>
-    <h2 data-en="Legal & project notes" data-ru="Документы и информация">Legal & project notes</h2>
-    <p data-en="MOAI Studio 21 is an independent parody project by JVR_Prod, maintained by one developer. The name is a playful reference to FL Studio 21; this project is not affiliated with, sponsored by, or endorsed by Image-Line, FL Studio, or Discord Inc. All third-party names and marks belong to their respective owners." data-ru="MOAI Studio 21 — независимый пародийный проект JVR_Prod, который поддерживает один разработчик. Название шутливо отсылает к FL Studio 21; проект не связан с Image-Line, FL Studio или Discord Inc. и не одобрен ими. Названия и товарные знаки принадлежат соответствующим владельцам.">MOAI Studio 21 is an independent parody project by JVR_Prod, maintained by one developer. The name is a playful reference to FL Studio 21; this project is not affiliated with, sponsored by, or endorsed by Image-Line, FL Studio, or Discord Inc. All third-party names and marks belong to their respective owners.</p>
-    <div class="legal-links">
-      <a class="legal-link" href="terms.html"><span>📄</span><span data-en="Terms of Service ↗" data-ru="Условия использования ↗">Terms of Service ↗</span></a>
-      <a class="legal-link" href="privacy.html"><span>🔐</span><span data-en="Privacy Policy ↗" data-ru="Политика конфиденциальности ↗">Privacy Policy ↗</span></a>
-      <a class="legal-link" href="https://discord.com/developers/docs/rich-presence/overview" target="_blank" rel="noreferrer"><span>↗</span><span data-en="Discord Rich Presence docs" data-ru="Документация Discord Rich Presence">Discord Rich Presence docs</span></a>
-    </div>
-  </section>
-  <footer>
-    <p data-en="Made by JVR_Prod. One developer, many unfinished loops. MOAI does not judge your mix — MOAI has no ears." data-ru="Сделано JVR_Prod. Один разработчик, множество незаконченных лупов. MOAI не осуждает твой микс — у MOAI нет ушей.">Made by JVR_Prod. One developer, many unfinished loops. MOAI does not judge your mix — MOAI has no ears.</p>
-    <a href="#top" data-en="Back to top ↑" data-ru="Наверх ↑">Back to top ↑</a>
   </footer>
-</main>
-<script>
-(function(){
-  const html = document.documentElement;
-  const button = document.getElementById('languageToggle');
-  const translatable = document.querySelectorAll('[data-en][data-ru]');
-  function setLanguage(lang){
-    html.lang = lang;
-    html.dataset.lang = lang;
-    translatable.forEach(el => { el.innerHTML = el.dataset[lang]; });
-    button.textContent = lang === 'en' ? 'РУССКИЙ  /  EN' : 'ENGLISH  /  RU';
-    button.setAttribute('aria-label', lang === 'en' ? 'Switch language to Russian' : 'Переключить язык на английский');
-    document.title = lang === 'en' ? 'MOAI Studio 21 — JVR_Prod' : 'MOAI Studio 21 — JVR_Prod';
-    try { localStorage.setItem('moai-language', lang); } catch(e) {}
-  }
-  let initial = 'en';
-  try { const saved = localStorage.getItem('moai-language'); if(saved === 'en' || saved === 'ru') initial = saved; } catch(e) {}
-  setLanguage(initial);
-  button.addEventListener('click', () => setLanguage(html.lang === 'en' ? 'ru' : 'en'));
-})();
-</script>
+  <script>
+    (function(){
+      const toggle=document.getElementById('langToggle');
+      let lang='en';
+      try{lang=localStorage.getItem('jvr-index-lang')||'en';}catch(e){}
+      function applyLanguage(next){
+        lang=next==='ru'?'ru':'en';
+        document.documentElement.lang=lang;
+        document.querySelectorAll('[data-en][data-ru]').forEach(el=>{
+          const value=el.getAttribute('data-'+lang);
+          if(value!==null){
+            if(el.children.length && /<\/?(em|strong|span|b|i)\b/i.test(value)) el.innerHTML=value;
+            else el.textContent=value;
+          }
+        });
+        toggle.textContent=lang==='en'?'EN / RU':'RU / EN';
+        toggle.setAttribute('aria-label',lang==='en'?'Switch to Russian':'Switch to English');
+        try{localStorage.setItem('jvr-index-lang',lang);}catch(e){}
+      }
+      toggle.addEventListener('click',()=>applyLanguage(lang==='en'?'ru':'en'));
+      applyLanguage(lang);
+      document.getElementById('year').textContent=new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
