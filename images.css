@@ -1,9 +1,8 @@
 /*
-  JaVeR / JVR — image settings
-  Change the two file paths below to replace the homepage images.
+  JaVeR / JVR — homepage image settings
 
-  Main hero image:    images/hero.jpg
-  MOAI project image: images/moai.jpg
+  To replace an image, upload a new file with the same name into /images.
+  All paths below are relative to this CSS file in the repository root.
 */
 
 :root {
@@ -13,7 +12,7 @@
   --jvr-ticker-image: url("images/ticker.jpg");
 }
 
-/* Large visual block at the top of the homepage */
+/* HERO: the large panel behind the main JaVeR headline */
 .hero-panel {
   background-color: #111;
   background-image: var(--jvr-hero-image);
@@ -22,12 +21,12 @@
   background-repeat: no-repeat;
 }
 
-/* Keep the original technical texture, but let the photograph show through */
+/* Keep the checker texture subtle so the photograph remains visible. */
 .hero-panel .checker-field {
-  opacity: 0.12;
+  opacity: 0.08;
 }
 
-/* Image behind the MOAI Studio 21 project title */
+/* PROJECT: image behind the MOAI Studio 21 title */
 .project-visual {
   background-color: #161414;
   background-image: var(--jvr-project-image);
@@ -36,7 +35,7 @@
   background-repeat: no-repeat;
 }
 
-/* Darken the project photo slightly so the white logo stays readable */
+/* NOTE: `deg` must not contain a space. The former `135 deg` was invalid CSS. */
 .project-visual::before {
   background: linear-gradient(
     135deg,
@@ -46,7 +45,30 @@
   opacity: 1;
 }
 
-/* Keep the existing bottom shadow over the project photo */
 .project-visual::after {
-  background: linear-gradient(0deg, rgba(8, 8, 8, 0.55), transparent 75%);
+  background: linear-gradient(
+    0deg,
+    rgba(8, 8, 8, 0.55),
+    transparent 75%
+  );
+}
+
+/* OPTIONAL: decorative photos. If these files are absent, the original solid
+   background colours remain as fallbacks. */
+.topbar {
+  background-image:
+    linear-gradient(rgba(9, 9, 9, 0.84), rgba(9, 9, 9, 0.84)),
+    var(--jvr-topbar-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ticker {
+  background-image:
+    linear-gradient(rgba(16, 14, 14, 0.78), rgba(16, 14, 14, 0.78)),
+    var(--jvr-ticker-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
