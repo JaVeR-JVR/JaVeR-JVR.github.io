@@ -9,8 +9,8 @@
 :root {
   --jvr-hero-image: url("images/hero.jpg");
   --jvr-project-image: url("images/moai.jpg");
-  --jvr-topbar-image: url("images/moai.jpg");
-  --jvr-ticker-image: url("images/moai.jpg");
+  --jvr-topbar-image: url("images/topbar.jpg");
+  --jvr-ticker-image: url("images/ticker.jpg");
 }
 
 /* Large visual block at the top of the homepage */
